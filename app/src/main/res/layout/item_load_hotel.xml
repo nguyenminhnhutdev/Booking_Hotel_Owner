@@ -40,6 +40,7 @@
                 android:rating="4.5"
                 android:layout_marginTop="10dp"
                 style="@style/Widget.AppCompat.RatingBar.Small"/>
+
             <TextView
                 android:id="@+id/item_mota_diadiem"
                 android:layout_width="wrap_content"
