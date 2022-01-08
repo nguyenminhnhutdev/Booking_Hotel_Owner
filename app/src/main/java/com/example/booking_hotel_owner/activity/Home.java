@@ -1,58 +1,75 @@
 package com.example.booking_hotel_owner.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.booking_hotel_owner.Capture;
 import com.example.booking_hotel_owner.R;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.example.booking_hotel_owner.fragment.AddHotel;
+import com.example.booking_hotel_owner.fragment.Check_Phong;
+import com.example.booking_hotel_owner.fragment.DSXetDuyetThuePhong;
+import com.example.booking_hotel_owner.fragment.Profile;
+import com.example.booking_hotel_owner.fragment.home;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class Home extends AppCompatActivity {
-ImageView Scan;
+
+    BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
-        Scan=findViewById(R.id.Scan);
-        Scan.setOnClickListener(new View.OnClickListener() {
+
+        bottomNavigationView = findViewById(R.id.nav_menu);
+
+        home home = new home();
+
+        loadFragment(home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                IntentIntegrator intentIntegrator= new IntentIntegrator(Home.this);
-                intentIntegrator.setPrompt("fff");
-                intentIntegrator.setBeepEnabled(true);
-                intentIntegrator.setOrientationLocked(true);
-                intentIntegrator.setCaptureActivity(Capture.class);
-                intentIntegrator.initiateScan();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                home home = new home();
+                switch (item.getItemId()){
+                    case R.id.menu_home:
+                        loadFragment(home);
+                        return true;
+
+                    case R.id.menu_them:
+                        fragment = new DSXetDuyetThuePhong();
+                        loadFragment(fragment);
+                        return true;
+
+                    case R.id.menu_check:
+                        fragment = new Profile();
+                        loadFragment(fragment);
+                        return true;
+                }
+                return false;
             }
         });
+
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        IntentResult intentResult= IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
-        if(intentResult.getContents()!=null)
-        {
-            AlertDialog.Builder builder= new AlertDialog.Builder(Home.this);
-            builder.setMessage(intentResult.getContents());
-            builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-            builder.show();
-        }else {
-            Toast.makeText(Home.this, "k thjeer scan", Toast.LENGTH_SHORT).show();
-        }
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.continer,fragment);
+        fragmentTransaction.commit();
     }
+
 }
