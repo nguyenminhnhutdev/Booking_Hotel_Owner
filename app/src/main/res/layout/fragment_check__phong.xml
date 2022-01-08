@@ -10,5 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
-
+<ImageView
+    android:layout_width="50dp"
+    android:background="@drawable/ic_baseline_qr_code_scanner_24"
+    android:id="@+id/Scan"
+    android:layout_height="50dp"/>
 </FrameLayout>

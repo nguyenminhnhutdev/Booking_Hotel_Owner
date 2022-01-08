@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Home">
+    tools:context=".Scan">
     <ImageView
-        android:id="@+id/Scan"
         android:layout_width="50dp"
         android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        android:id="@+id/Scan1"
         android:layout_height="50dp"/>
-
 </LinearLayout>
