@@ -4,13 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable-v24/bg_bleach.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable-v24/ic_search.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable/bg_button_login.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable/bg_login.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable/bg_menu.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable/bg_panel.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/drawable/bg_panel_right.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/layout/fragment_home.xml" value="0.2359375" />
+        <entry key="..\:/Android Studio/github/DAMH/Ower/7_1/Booking_Hotel_Owner/app/src/main/res/menu/menu_bottom.xml" value="0.25" />
       </map>
     </option>
   </component>
