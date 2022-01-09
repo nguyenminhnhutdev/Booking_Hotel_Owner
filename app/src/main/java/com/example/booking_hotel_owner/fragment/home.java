@@ -20,6 +20,7 @@ import com.example.booking_hotel_owner.R;
 import com.example.booking_hotel_owner.Recyclerview_noibat;
 import com.example.booking_hotel_owner.Remote.ApiUtils;
 import com.example.booking_hotel_owner.Remote.Method;
+import com.example.booking_hotel_owner.ResultModel.HotelModel;
 import com.example.booking_hotel_owner.activity.Login;
 import com.example.booking_hotel_owner.activity.ThemKhachSanPhong;
 
@@ -37,7 +38,8 @@ RecyclerView rcv_hotel;
     ImageView btn_add;
     Method method;
     Recyclerview_noibat recyclerview_noibat;
-    public static Hotel hotel;
+    public static HotelModel hotel;
+    public  static String idhotel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,41 +63,42 @@ RecyclerView rcv_hotel;
         list = new ArrayList<>();
         Log.v("idHotel", Login.idUser);
 
-       /* method.getHotelByIdUser(Login.idUser).enqueue(new Callback<Hotel>() {
+        method.getHotelByIdUser(Login.idUser).enqueue(new Callback<HotelModel>() {
             @Override
-            public void onResponse(Call<Hotel> call, Response<Hotel> response) {
+            public void onResponse(Call<HotelModel> call, Response<HotelModel> response) {
                 hotel = response.body();
+                home.idhotel= hotel.getIdhotel();
                 Log.v("idHotel", hotel.getIdhotel());
+                method.getRoomByIdHotel(home.idhotel).enqueue(new Callback<List<Room>>() {
+                    @Override
+                    public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
+                        list = (ArrayList<Room>) response.body();
+                        rcv_hotel .setHasFixedSize(true);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        recyclerview_noibat = new Recyclerview_noibat(getContext(), list);
+                        rcv_hotel.setLayoutManager(layoutManager);
+
+                        rcv_hotel.setAdapter(recyclerview_noibat);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Room>> call, Throwable t) {
+
+                    }
+                });
             }
 
             @Override
-            public void onFailure(Call<Hotel> call, Throwable t) {
+            public void onFailure(Call<HotelModel> call, Throwable t) {
 
             }
         });
-*/
 
 
 
 
 
-        method.getRoomByIdHotel("KS1").enqueue(new Callback<List<Room>>() {
-            @Override
-            public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
-                list = (ArrayList<Room>) response.body();
-                rcv_hotel .setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                recyclerview_noibat = new Recyclerview_noibat(getContext(), list);
-                rcv_hotel.setLayoutManager(layoutManager);
 
-                rcv_hotel.setAdapter(recyclerview_noibat);
-            }
-
-            @Override
-            public void onFailure(Call<List<Room>> call, Throwable t) {
-
-            }
-        });
     }
 }
 

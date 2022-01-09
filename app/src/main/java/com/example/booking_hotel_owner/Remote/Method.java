@@ -11,9 +11,11 @@ import com.example.booking_hotel_owner.Model.PostFeedBackModel;
 import com.example.booking_hotel_owner.Model.PostHotelModel;
 import com.example.booking_hotel_owner.Model.Room;
 import com.example.booking_hotel_owner.Model.Room1;
+import com.example.booking_hotel_owner.Model.RoomPost;
 import com.example.booking_hotel_owner.Model.StatusModel;
 import com.example.booking_hotel_owner.Model.UserModelPost;
 import com.example.booking_hotel_owner.ResultModel.GetFeedBackByHotel;
+import com.example.booking_hotel_owner.ResultModel.HotelModel;
 import com.example.booking_hotel_owner.ResultModel.PostBooking;
 import com.example.booking_hotel_owner.ResultModel.PostBookingDetail;
 import com.example.booking_hotel_owner.ResultModel.PostCustomer;
@@ -84,8 +86,8 @@ public interface Method {
 
 
     //////////////////////////////////////////////////////////////////
-    @GET ("api/Hotel/{get}")
-    Call<Hotel> getHotelByIdUser (@Path("idUser") String idUser);
+    @GET ("api/Hotel/{idUser}")
+    Call<HotelModel> getHotelByIdUser (@Path("idUser") String idUser);
 
     @POST("/User/post-userhotel")
     Call<PostHotel> postHotel (@Query("username") String username,
@@ -95,6 +97,10 @@ public interface Method {
                                @Query("phone")String phone);
     @PUT("api/Booking/update-booking")
     Call<ResultModel> updateBooking(@Query("idBooking")String idBooking);
+
+
+    @POST ("api/Room/insert-room")
+    Call<Room> InsertRoom(@Body RoomPost room);
 
 
 

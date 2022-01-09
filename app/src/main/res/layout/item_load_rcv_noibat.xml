@@ -28,7 +28,17 @@
             android:textSize="20sp"
             android:textColor="@color/Black"
             android:fontFamily="sans-serif"/>
-        
+
+        <TextView
+            android:id="@+id/item_idphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bình định"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:fontFamily="sans-serif"/>
+
+
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

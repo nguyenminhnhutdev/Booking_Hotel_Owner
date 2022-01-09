@@ -11,11 +11,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.booking_hotel_owner.Model.Room;
+import com.example.booking_hotel_owner.Model.RoomPost;
 import com.example.booking_hotel_owner.R;
+import com.example.booking_hotel_owner.Remote.ApiUtils;
+import com.example.booking_hotel_owner.Remote.Method;
+import com.example.booking_hotel_owner.fragment.home;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,10 +34,15 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ThemKhachSanPhong extends AppCompatActivity {
     private static final int RESULT_OK = -1;
-    ImageView btn_back,img_capnhatimg;
-    TextView btn_thoat,themmoi;
+    ImageView btn_back, img_capnhatimg;
+    TextView btn_thoat, themmoi;
+    EditText txt_maphongks, txt_giakhachsan,txt_motaks;
     private static final int SELECT_PICTURE = 1;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -40,21 +51,24 @@ public class ThemKhachSanPhong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_them_khach_san_phong);
-        img_capnhatimg=findViewById(R.id.img_capnhatimg);
+        img_capnhatimg = findViewById(R.id.img_capnhatimg);
         btn_thoat = findViewById(R.id.btn_thoat);
-        themmoi=findViewById(R.id.themmoi);
+        themmoi = findViewById(R.id.themmoi);
+        txt_maphongks = findViewById(R.id.txt_maphongks);
+        txt_giakhachsan = findViewById(R.id.txt_giakhachsan);
+        txt_motaks = findViewById(R.id.txt_motaks);
         StorageReference storageRef = storage.getReferenceFromUrl("gs://thanh-l-c.appspot.com");
 
         btn_back = findViewById(R.id.btn_back);
 
-img_capnhatimg.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto, SELECT_PICTURE);
-    }
-});
+        img_capnhatimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, SELECT_PICTURE);
+            }
+        });
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,10 +104,32 @@ img_capnhatimg.setOnClickListener(new View.OnClickListener() {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful()) {
                             Uri downloadUri = task.getResult();
-                            Toast.makeText(getApplicationContext(), "Thành Công" + String.valueOf(downloadUri), Toast.LENGTH_SHORT).show();
                             Log.d("AAAA", String.valueOf(downloadUri) + "");
 
                             //    String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                            RoomPost r = new RoomPost();
+                            r.setIdroom(txt_maphongks.getText().toString());
+                            r.setDescription(txt_motaks.getText().toString());
+                            r.setImage(String.valueOf(downloadUri));
+                            r.setIdHotel(home.idhotel);
+                            r.setPrice(Integer.parseInt(txt_giakhachsan.getText().toString()));
+                            r.setStatus(0);
+
+
+                            Method method = ApiUtils.getSOService();
+                            method.InsertRoom(r).enqueue(new Callback<Room>() {
+                                @Override
+                                public void onResponse(Call<Room> call, Response<Room> response) {
+                                    Toast.makeText(ThemKhachSanPhong.this, "Lỗi Server", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<Room> call, Throwable t) {
+                                    Toast.makeText(ThemKhachSanPhong.this, "Thêm phòng thành công", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
 
 
                             // ạnh nhựt code update cái user  chỗ này nhé muốn lấy hình thì String.valueof(downloadUri)
