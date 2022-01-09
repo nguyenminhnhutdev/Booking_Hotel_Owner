@@ -17,10 +17,16 @@
             android:textColor="@color/black"
             android:textSize="20sp"/>
     </RelativeLayout>
-    <ListView
-        android:id="@+id/list_choxacnhanthue"
+    <ImageView
+        android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        android:id="@+id/nextChecking"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/rcv_xetduyet"
+        />
 
 
 </LinearLayout>
