@@ -3,30 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AddHotel"
+    tools:context=".fragment.DSXetDuyetThuePhong"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Thêm Chi tiết khách sạn"
+            android:text="Danh sách chờ thuê phòng"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textSize="20sp"/>
     </RelativeLayout>
-    <LinearLayout
+    <ImageView
+        android:background="@drawable/ic_baseline_qr_code_scanner_24"
+        android:id="@+id/nextChecking"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:id="@+id/rcv_xetduyet"
+        />
 
 
 </LinearLayout>

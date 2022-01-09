@@ -2,7 +2,14 @@
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
-   
+      <map>
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/activity_accept_checking.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/activity_chec_king.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/fragment_d_s_xet_duyet_thue_phong.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/fragment_home.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/item_load_history_booking.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/Hai Dang/AndroidStudioProjects/BTk/Booking_Hotel_Owner/app/src/main/res/layout/item_load_rcv_noibat.xml" value="0.11639492753623189" />
+      </map>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
