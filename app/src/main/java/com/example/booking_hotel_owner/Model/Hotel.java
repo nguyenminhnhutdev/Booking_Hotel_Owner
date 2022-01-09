@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
-public class Hotel {
+public class    Hotel {
 
     @SerializedName("idhotel")
     @Expose
@@ -45,7 +45,7 @@ public class Hotel {
     private List<Object> feedBacks = null;
     @SerializedName("rooms")
     @Expose
-    private List<Object> rooms = null;
+    private List<Room> rooms = null;
 
     public String getIdhotel() {
         return idhotel;
@@ -145,11 +145,11 @@ public class Hotel {
         this.feedBacks = feedBacks;
     }
 
-    public List<Object> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
     }
 
-    public void setRooms(List<Object> rooms) {
+    public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
     }
 
