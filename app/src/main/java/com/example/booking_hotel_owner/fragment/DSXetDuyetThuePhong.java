@@ -70,6 +70,7 @@ RecyclerView rcv_xetduyet;
                 rcv_xetduyet.setLayoutManager(layoutManager);
 
                 rcv_xetduyet.setAdapter(recyclerview_booking);
+
             }
 
             @Override
