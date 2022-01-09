@@ -38,6 +38,7 @@ public class ThemKhachSanPhong extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_them_khach_san_phong);
         img_capnhatimg=findViewById(R.id.img_capnhatimg);
         btn_thoat = findViewById(R.id.btn_thoat);

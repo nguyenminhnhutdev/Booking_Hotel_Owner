@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Booking_Hotel_Owner"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.DoiMatKhau"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThongTinCaNhan"
+            android:exported="false" />
+        <activity
             android:name=".activity.AcceptChecking"
             android:exported="false" />
         <activity

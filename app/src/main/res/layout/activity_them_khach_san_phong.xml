@@ -67,7 +67,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:layout_marginTop="20sp">
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center">
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="50dp"
@@ -76,6 +79,7 @@
                 android:textStyle="bold"
                 android:id="@+id/themmoi"
                 android:layout_marginLeft="20dp"
+                android:layout_gravity="left"
                 android:background="@drawable/bg_button_login"/>
             <TextView
                 android:id="@+id/btn_thoat"
@@ -84,7 +88,8 @@
                 android:text="Thoát"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:layout_marginLeft="70dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/bg_button_login"/>
         </LinearLayout>
 
