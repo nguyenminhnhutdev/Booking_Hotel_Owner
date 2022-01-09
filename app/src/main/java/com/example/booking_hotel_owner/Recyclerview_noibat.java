@@ -37,7 +37,7 @@ public class Recyclerview_noibat extends RecyclerView.Adapter<Recyclerview_noiba
     }
 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_load_rcv_noibat, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_load_hotel, parent, false);
         return new ViewHolder(view);
     }
 
@@ -50,7 +50,7 @@ public class Recyclerview_noibat extends RecyclerView.Adapter<Recyclerview_noiba
         String url = filterList.get(position).getImage();
         Picasso.get().load(url).into(holder.imvHSP);
         holder.txtTSP.setText(filterList.get(position).getIdHotelNavigation().getHotelName());
-        holder.Gia.setText(filterList.get(position).getDescription());
+      //  holder.Gia.setText(filterList.get(position).getDescription());
         holder.idphong.setText(filterList.get(position).getIdroom());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +84,11 @@ public class Recyclerview_noibat extends RecyclerView.Adapter<Recyclerview_noiba
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imvHSP = itemView.findViewById(R.id.img_item_noibat);
-            txtTSP = itemView.findViewById(R.id.item_ten_diadiem);
-            Gia = itemView.findViewById(R.id.item_mota_diadiem);
-            idphong = itemView.findViewById(R.id.item_idphong);
-            cardView = itemView.findViewById(R.id.noibat);
+            imvHSP = itemView.findViewById(R.id.loaimg);
+            txtTSP = itemView.findViewById(R.id.item_ten_diadiem4);
+            Gia = itemView.findViewById(R.id.item_ten_diadiem5);
+            idphong = itemView.findViewById(R.id.item_mota_diadiem7);
+            cardView = itemView.findViewById(R.id.nb4);
         }
     }
 
