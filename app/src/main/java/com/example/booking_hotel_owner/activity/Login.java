@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
     TextInputEditText txt_taikhoan1, txt_matkhau1, txt_nameHotel,txt_matkhau2, txt_email2, txt_idHotel;
     private Method method;
     public static  Hotel hotel;
+    public static  String idUser;
     ArrayList<Room> listRoom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,20 +133,8 @@ public class Login extends AppCompatActivity {
                     if(user.getIsCustomerOwner().equals("1")){
                         Toast.makeText(Login.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                         Log.v("idUser", response.body().getUsers().getIduser());
-                        method.getHotelByIdUser(response.body().getUsers().getIduser()).enqueue(new Callback<Hotel>() {
-                            @Override
-                            public void onResponse(Call<Hotel> call, Response<Hotel> response) {
-                                hotel  = response.body();
-                            }
-
-                            @Override
-                            public void onFailure(Call<Hotel> call, Throwable t) {
-
-                            }
-                        });
-
-
-                        Intent intent = new Intent(Login.this, Home.class);
+                        idUser = response.body().getUsers().getIduser();
+                       Intent intent = new Intent(Login.this, Home.class);
                         startActivity(intent);
                     }
                 } else {

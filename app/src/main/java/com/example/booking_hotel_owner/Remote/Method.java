@@ -79,11 +79,13 @@ public interface Method {
     @GET("api/Hotel/{idHotel}")
     Call<Hotel> getHotel (@Path("idHotel") String idHotel);
 
+    @GET("api/Room/get-hotel")
+    Call<List<Room>> getRoomByIdHotel(@Query("idHotel")String idHotel);
 
 
     //////////////////////////////////////////////////////////////////
-    @GET ("api/Hotel/get-hotelbyiduser")
-    Call<Hotel> getHotelByIdUser (@Query("idUser") String idUser);
+    @GET ("api/Hotel/{get}")
+    Call<Hotel> getHotelByIdUser (@Path("idUser") String idUser);
 
     @POST("/User/post-userhotel")
     Call<PostHotel> postHotel (@Query("username") String username,

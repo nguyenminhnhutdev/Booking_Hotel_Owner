@@ -7,17 +7,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.booking_hotel_owner.Model.Hotel;
 import com.example.booking_hotel_owner.Model.Room;
 import com.example.booking_hotel_owner.R;
 import com.example.booking_hotel_owner.Recyclerview_noibat;
 import com.example.booking_hotel_owner.Remote.ApiUtils;
 import com.example.booking_hotel_owner.Remote.Method;
+import com.example.booking_hotel_owner.activity.Login;
 import com.example.booking_hotel_owner.activity.ThemKhachSanPhong;
 
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ RecyclerView rcv_hotel;
     ImageView btn_add;
     Method method;
     Recyclerview_noibat recyclerview_noibat;
+    public static Hotel hotel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,12 +59,32 @@ RecyclerView rcv_hotel;
     private void getRoom () {
         method = ApiUtils.getSOService();
         list = new ArrayList<>();
-        method.getRoom().enqueue(new Callback<List<Room>>() {
+        Log.v("idHotel", Login.idUser);
+
+       /* method.getHotelByIdUser(Login.idUser).enqueue(new Callback<Hotel>() {
+            @Override
+            public void onResponse(Call<Hotel> call, Response<Hotel> response) {
+                hotel = response.body();
+                Log.v("idHotel", hotel.getIdhotel());
+            }
+
+            @Override
+            public void onFailure(Call<Hotel> call, Throwable t) {
+
+            }
+        });
+*/
+
+
+
+
+
+        method.getRoomByIdHotel("KS1").enqueue(new Callback<List<Room>>() {
             @Override
             public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
                 list = (ArrayList<Room>) response.body();
                 rcv_hotel .setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 recyclerview_noibat = new Recyclerview_noibat(getContext(), list);
                 rcv_hotel.setLayoutManager(layoutManager);
 
@@ -74,3 +98,4 @@ RecyclerView rcv_hotel;
         });
     }
 }
+
