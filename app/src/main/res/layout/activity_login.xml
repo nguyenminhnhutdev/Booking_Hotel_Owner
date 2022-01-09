@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="Họ và tên"
+                android:hint="Tên khách sạn"
                 app:boxStrokeColor="@color/white"
                 app:boxStrokeWidth="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +182,7 @@
                 app:layout_constraintVertical_bias="0.3">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_taikhoan2"
+                    android:id="@+id/txt_nameHotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text|textEmailAddress"
@@ -218,7 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="Email"
+                android:hint="Số điện thoại"
                 app:boxStrokeColor="@color/white"
                 app:boxStrokeWidth="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -235,7 +235,29 @@
                     android:textSize="13sp"
                     android:textStyle="normal" />
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_idHotel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Mã khách sạn"
+                app:boxStrokeColor="@color/white"
+                app:boxStrokeWidth="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_id_hotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textEmailAddress"
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <TextView

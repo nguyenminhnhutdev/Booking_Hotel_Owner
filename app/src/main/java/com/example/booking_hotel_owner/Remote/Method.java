@@ -8,6 +8,7 @@ import com.example.booking_hotel_owner.Model.CustomerModel;
 import com.example.booking_hotel_owner.Model.FeedBackModel;
 import com.example.booking_hotel_owner.Model.Hotel;
 import com.example.booking_hotel_owner.Model.PostFeedBackModel;
+import com.example.booking_hotel_owner.Model.PostHotelModel;
 import com.example.booking_hotel_owner.Model.Room;
 import com.example.booking_hotel_owner.Model.Room1;
 import com.example.booking_hotel_owner.Model.StatusModel;
@@ -16,7 +17,9 @@ import com.example.booking_hotel_owner.ResultModel.GetFeedBackByHotel;
 import com.example.booking_hotel_owner.ResultModel.PostBooking;
 import com.example.booking_hotel_owner.ResultModel.PostBookingDetail;
 import com.example.booking_hotel_owner.ResultModel.PostCustomer;
+import com.example.booking_hotel_owner.ResultModel.PostHotel;
 import com.example.booking_hotel_owner.ResultModel.PostUserModel;
+import com.example.booking_hotel_owner.ResultModel.ResultModel;
 
 import java.util.List;
 
@@ -24,6 +27,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -74,5 +78,22 @@ public interface Method {
 
     @GET("api/Hotel/{idHotel}")
     Call<Hotel> getHotel (@Path("idHotel") String idHotel);
+
+
+
+    //////////////////////////////////////////////////////////////////
+    @GET ("api/Hotel/get-hotelbyiduser")
+    Call<Hotel> getHotelByIdUser (@Query("idUser") String idUser);
+
+    @POST("/User/post-userhotel")
+    Call<PostHotel> postHotel (@Query("username") String username,
+                               @Query("pass")String pass,
+                               @Query("idhotel")String idhotel,
+                               @Query("namehotel")String namehotel,
+                               @Query("phone")String phone);
+    @PUT("api/Booking/update-booking")
+    Call<ResultModel> updateBooking(@Query("idBooking")String idBooking);
+
+
 
 }

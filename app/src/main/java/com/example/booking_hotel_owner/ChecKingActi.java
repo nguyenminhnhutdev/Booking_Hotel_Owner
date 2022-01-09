@@ -18,8 +18,10 @@ import android.widget.Toast;
 
 import com.example.booking_hotel_owner.Model.BookingModel;
 import com.example.booking_hotel_owner.Model.Room;
+import com.example.booking_hotel_owner.Model.StatusModel;
 import com.example.booking_hotel_owner.Remote.ApiUtils;
 import com.example.booking_hotel_owner.Remote.Method;
+import com.example.booking_hotel_owner.ResultModel.ResultModel;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -101,17 +103,64 @@ RecyclerView checking;
         IntentResult intentResult= IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(intentResult.getContents()!=null)
         {
-            AlertDialog.Builder builder= new AlertDialog.Builder(ChecKingActi.this);
-            builder.setMessage(intentResult.getContents());
-            editText.setText(intentResult.getContents());
-            builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
 
+
+
+            Method method = ApiUtils.getSOService();
+            method.updateBooking(intentResult.getContents()).enqueue(new Callback<ResultModel>() {
+                @Override
+                public void onResponse(Call<ResultModel> call, Response<ResultModel> response) {
+                    if(response.body().getStatus().equals("true")){
+                       // editText.setText("");
+                        AlertDialog.Builder builder= new AlertDialog.Builder(ChecKingActi.this);
+                        builder.setMessage("Check in Thành công!!!");
+                        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+
+                            }
+                        });
+                        builder.show();
+
+
+                    }
+                    else
+                    {
+                        AlertDialog.Builder builder= new AlertDialog.Builder(ChecKingActi.this);
+
+                        builder.setMessage("Check In Thất bại vui lòng kiểm tra lại thông tin!!!");
+                        builder.setPositiveButton("Thử lại", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+
+                            }
+                        });
+                        builder.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResultModel> call, Throwable t) {
+                    AlertDialog.Builder builder= new AlertDialog.Builder(ChecKingActi.this);
+
+                    builder.setMessage("Lỗi Server!!!");
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+
+                        }
+                    });
+                    builder.show();
                 }
             });
-            builder.show();
+
+
+
+
+
         }else {
             Toast.makeText(ChecKingActi.this, "k thjeer scan", Toast.LENGTH_SHORT).show();
         }
