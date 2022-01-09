@@ -74,6 +74,7 @@
                 android:text="Thêm mới"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:id="@+id/themmoi"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/bg_button_login"/>
             <TextView
